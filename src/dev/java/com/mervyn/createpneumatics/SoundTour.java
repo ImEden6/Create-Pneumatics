@@ -14,6 +14,8 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 final class SoundTour {
     private static final int START = 60;
     private static final int GAP = 50;
+    // PNEUMATICS_ONLY=vent,valve plays just the sounds whose names contain one of those
+    private static final List<String> ONLY = List.of(System.getenv().getOrDefault("PNEUMATICS_ONLY", "").split(","));
     private static final List<DeferredHolder<SoundEvent, SoundEvent>> LOOPS = List.of(Pneumatics.BLOWER_RUNNING, Pneumatics.TUBE_VENT);
 
     private static List<DeferredHolder<SoundEvent, SoundEvent>> sounds;
@@ -29,7 +31,9 @@ final class SoundTour {
                         @SuppressWarnings("unchecked")
                         DeferredHolder<SoundEvent, SoundEvent> sound = (DeferredHolder<SoundEvent, SoundEvent>) holder;
                         return sound;
-                    }).toList();
+                    })
+                    .filter(sound -> ONLY.stream().anyMatch(sound.getId().getPath()::contains))
+                    .toList();
         if (tick < next)
             return;
         if (index == sounds.size()) {
