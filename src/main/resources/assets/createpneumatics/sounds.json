@@ -1,0 +1,110 @@
+{
+  "blower.running": {
+    "sounds": [
+      {
+        "name": "createpneumatics:blower/running",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.createpneumatics.blower.running"
+  },
+  "tube.vent": {
+    "sounds": [
+      {
+        "name": "createpneumatics:tube/vent",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.createpneumatics.tube.vent"
+  },
+  "terminal.launch": {
+    "sounds": [
+      {
+        "name": "createpneumatics:terminal/launch",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.createpneumatics.terminal.launch"
+  },
+  "terminal.arrive": {
+    "sounds": [
+      {
+        "name": "createpneumatics:terminal/arrive",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.createpneumatics.terminal.arrive"
+  },
+  "payload.pop": {
+    "sounds": [
+      {
+        "name": "createpneumatics:tube/pop",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.createpneumatics.payload.pop"
+  },
+  "valve.open": {
+    "sounds": [
+      {
+        "name": "createpneumatics:valve/open",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.createpneumatics.valve.open"
+  },
+  "valve.close": {
+    "sounds": [
+      {
+        "name": "createpneumatics:valve/close",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.createpneumatics.valve.close"
+  },
+  "bell_jar.seal": {
+    "sounds": [
+      {
+        "name": "createpneumatics:bell_jar/seal",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.createpneumatics.bell_jar.seal"
+  },
+  "bell_jar.vent": {
+    "sounds": [
+      {
+        "name": "createpneumatics:bell_jar/vent",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.createpneumatics.bell_jar.vent"
+  },
+  "bell_jar.done": {
+    "sounds": [
+      {
+        "name": "createpneumatics:bell_jar/done",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.createpneumatics.bell_jar.done"
+  },
+  "vacuum_pad.grab": {
+    "sounds": [
+      {
+        "name": "createpneumatics:vacuum_pad/grab",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.createpneumatics.vacuum_pad.grab"
+  },
+  "vacuum_pad.release": {
+    "sounds": [
+      {
+        "name": "createpneumatics:vacuum_pad/release",
+        "attenuation_distance": 24
+      }
+    ],
+    "subtitle": "subtitles.createpneumatics.vacuum_pad.release"
+  }
+}

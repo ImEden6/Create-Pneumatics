@@ -1,0 +1,33 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "glass": "createpneumatics:block/glass_tube",
+    "particle": "createpneumatics:block/glass_tube"
+  },
+  "elements": [
+    {
+      "from": [
+        5,
+        5,
+        5
+      ],
+      "to": [
+        11,
+        11,
+        5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5,
+            5,
+            11,
+            11
+          ],
+          "texture": "#glass"
+        }
+      }
+    }
+  ],
+  "render_type": "minecraft:translucent"
+}

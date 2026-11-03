@@ -12,6 +12,7 @@ import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.food.FoodProperties;
@@ -44,9 +45,27 @@ public final class Pneumatics {
     static final DeferredRegister<DisplaySource> DISPLAY_SOURCES = DeferredRegister.create(CreateRegistries.DISPLAY_SOURCE, CreatePneumatics.MODID);
     static final DeferredRegister<RecipeSerializer<?>> SERIALIZERS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, CreatePneumatics.MODID);
     static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(Registries.RECIPE_TYPE, CreatePneumatics.MODID);
+    static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(Registries.SOUND_EVENT, CreatePneumatics.MODID);
     static final DeferredRegister<ArmInteractionPointType> ARM_POINTS = DeferredRegister.create(CreateRegistries.ARM_INTERACTION_POINT_TYPE, CreatePneumatics.MODID);
 
     public static final DeferredHolder<ArmInteractionPointType, VacuumPadArmPoint.Type> PAD_ARM_POINT = ARM_POINTS.register("vacuum_pad", VacuumPadArmPoint.Type::new);
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> BLOWER_RUNNING = sound("blower.running");
+    public static final DeferredHolder<SoundEvent, SoundEvent> TUBE_VENT = sound("tube.vent");
+    public static final DeferredHolder<SoundEvent, SoundEvent> TERMINAL_LAUNCH = sound("terminal.launch");
+    public static final DeferredHolder<SoundEvent, SoundEvent> TERMINAL_ARRIVE = sound("terminal.arrive");
+    public static final DeferredHolder<SoundEvent, SoundEvent> PAYLOAD_POP = sound("payload.pop");
+    public static final DeferredHolder<SoundEvent, SoundEvent> VALVE_OPEN = sound("valve.open");
+    public static final DeferredHolder<SoundEvent, SoundEvent> VALVE_CLOSE = sound("valve.close");
+    public static final DeferredHolder<SoundEvent, SoundEvent> JAR_SEAL = sound("bell_jar.seal");
+    public static final DeferredHolder<SoundEvent, SoundEvent> JAR_VENT = sound("bell_jar.vent");
+    public static final DeferredHolder<SoundEvent, SoundEvent> JAR_DONE = sound("bell_jar.done");
+    public static final DeferredHolder<SoundEvent, SoundEvent> PAD_GRAB = sound("vacuum_pad.grab");
+    public static final DeferredHolder<SoundEvent, SoundEvent> PAD_RELEASE = sound("vacuum_pad.release");
+
+    private static DeferredHolder<SoundEvent, SoundEvent> sound(String name) {
+        return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(CreatePneumatics.MODID, name)));
+    }
 
     private static BlockBehaviour.Properties brass() {
         return BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(2f).sound(SoundType.COPPER);
@@ -56,6 +75,8 @@ public final class Pneumatics {
             () -> new RootsBlowerBlock(brass().noOcclusion()));
     public static final DeferredBlock<PneumaticTubeBlock> TUBE = BLOCKS.register("pneumatic_tube",
             () -> new PneumaticTubeBlock(brass().noOcclusion()));
+    public static final DeferredBlock<PneumaticTubeBlock> GLASS_TUBE = BLOCKS.register("glass_pneumatic_tube",
+            () -> new PneumaticTubeBlock(brass().sound(SoundType.GLASS).noOcclusion()));
     public static final DeferredBlock<PressureGaugeBlock> GAUGE = BLOCKS.register("pressure_gauge",
             () -> new PressureGaugeBlock(brass().noOcclusion()));
     public static final DeferredBlock<ReliefValveBlock> VALVE = BLOCKS.register("relief_valve",
@@ -86,13 +107,14 @@ public final class Pneumatics {
     public static final DeferredItem<Item> OPTICAL_GLASS = ITEMS.registerSimpleItem("optical_glass");
     public static final DeferredItem<BlockItem> BLOWER_ITEM = ITEMS.registerSimpleBlockItem(BLOWER);
     public static final DeferredItem<BlockItem> TUBE_ITEM = ITEMS.registerSimpleBlockItem(TUBE);
+    public static final DeferredItem<BlockItem> GLASS_TUBE_ITEM = ITEMS.registerSimpleBlockItem(GLASS_TUBE);
     public static final DeferredItem<BlockItem> GAUGE_ITEM = ITEMS.registerSimpleBlockItem(GAUGE);
     public static final DeferredItem<BlockItem> VALVE_ITEM = ITEMS.registerSimpleBlockItem(VALVE);
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<RootsBlowerBlockEntity>> BLOWER_BE = BLOCK_ENTITIES.register("roots_blower",
             () -> BlockEntityType.Builder.of((pos, state) -> new RootsBlowerBlockEntity(Pneumatics.BLOWER_BE.get(), pos, state), BLOWER.get()).build(null));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PneumaticTubeBlockEntity>> TUBE_BE = BLOCK_ENTITIES.register("pneumatic_tube",
-            () -> BlockEntityType.Builder.of((pos, state) -> new PneumaticTubeBlockEntity(Pneumatics.TUBE_BE.get(), pos, state), TUBE.get()).build(null));
+            () -> BlockEntityType.Builder.of((pos, state) -> new PneumaticTubeBlockEntity(Pneumatics.TUBE_BE.get(), pos, state), TUBE.get(), GLASS_TUBE.get()).build(null));
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PressureGaugeBlockEntity>> GAUGE_BE = BLOCK_ENTITIES.register("pressure_gauge",
             () -> BlockEntityType.Builder.of((pos, state) -> new PressureGaugeBlockEntity(Pneumatics.GAUGE_BE.get(), pos, state), GAUGE.get()).build(null));
 
@@ -151,6 +173,7 @@ public final class Pneumatics {
         SERIALIZERS.register(modBus);
         RECIPE_TYPES.register(modBus);
         ARM_POINTS.register(modBus);
+        SOUNDS.register(modBus);
         ENTITY_TYPES.register(modBus);
         modBus.addListener(Pneumatics::registerCapabilities);
         modBus.addListener(PadCargo::register);
@@ -179,6 +202,7 @@ public final class Pneumatics {
             return;
         event.accept(BLOWER_ITEM.get());
         event.accept(TUBE_ITEM.get());
+        event.accept(GLASS_TUBE_ITEM.get());
         event.accept(GAUGE_ITEM.get());
         event.accept(VALVE_ITEM.get());
         event.accept(JAR_ITEM.get());

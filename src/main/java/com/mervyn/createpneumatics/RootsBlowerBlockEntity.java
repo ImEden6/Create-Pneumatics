@@ -4,11 +4,13 @@ import java.util.List;
 
 import static com.simibubi.create.content.kinetics.base.HorizontalKineticBlock.HORIZONTAL_FACING;
 
+import com.mervyn.createpneumatics.client.LoopSound;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -32,6 +34,15 @@ public class RootsBlowerBlockEntity extends KineticBlockEntity {
         float magnitude = Math.min(Math.abs(speed) / PneumaticTubeBlockEntity.RPM_SCALE, 1f);
         boolean front = state.getValue(HORIZONTAL_FACING) == flange;
         return (front ? sign : -sign) * magnitude;
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        float speed = Math.abs(getSpeed());
+        if (level.isClientSide && speed != 0)
+            LoopSound.keep(this, Pneumatics.BLOWER_RUNNING.get(), speed / PneumaticTubeBlockEntity.RPM_SCALE,
+                    Mth.clamp(.6f + speed / 256f, .6f, 1.4f));
     }
 
     @Override

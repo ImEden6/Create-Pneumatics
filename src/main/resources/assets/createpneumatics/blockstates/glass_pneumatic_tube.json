@@ -1,0 +1,110 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "north": "false"
+      },
+      "apply": {
+        "model": "createpneumatics:block/glass_tube_cap"
+      }
+    },
+    {
+      "when": {
+        "east": "false"
+      },
+      "apply": {
+        "model": "createpneumatics:block/glass_tube_cap",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "south": "false"
+      },
+      "apply": {
+        "model": "createpneumatics:block/glass_tube_cap",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "west": "false"
+      },
+      "apply": {
+        "model": "createpneumatics:block/glass_tube_cap",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "up": "false"
+      },
+      "apply": {
+        "model": "createpneumatics:block/glass_tube_cap",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "down": "false"
+      },
+      "apply": {
+        "model": "createpneumatics:block/glass_tube_cap",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "north": "true"
+      },
+      "apply": {
+        "model": "createpneumatics:block/glass_tube_arm"
+      }
+    },
+    {
+      "when": {
+        "east": "true"
+      },
+      "apply": {
+        "model": "createpneumatics:block/glass_tube_arm",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "south": "true"
+      },
+      "apply": {
+        "model": "createpneumatics:block/glass_tube_arm",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "west": "true"
+      },
+      "apply": {
+        "model": "createpneumatics:block/glass_tube_arm",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "up": "true"
+      },
+      "apply": {
+        "model": "createpneumatics:block/glass_tube_arm",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "down": "true"
+      },
+      "apply": {
+        "model": "createpneumatics:block/glass_tube_arm",
+        "x": 90
+      }
+    }
+  ]
+}

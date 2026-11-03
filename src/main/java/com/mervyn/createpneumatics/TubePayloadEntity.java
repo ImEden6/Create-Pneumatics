@@ -14,7 +14,6 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -35,6 +34,8 @@ public class TubePayloadEntity extends Entity {
     @Nullable
     private BlockPos from;
     private int stalled;
+    private double lerpX, lerpY, lerpZ;
+    private boolean lerping;
 
     public TubePayloadEntity(EntityType<? extends TubePayloadEntity> type, Level level) {
         super(type, level);
@@ -65,11 +66,41 @@ public class TubePayloadEntity extends Entity {
         entityData.set(ITEM, stack);
     }
 
+    // the server moves a payload a whole tube per tick; landing on each new position one tick later
+    // lets the renderer slide between centres instead of jumping, so it stays inside a glass tube
+    @Override
+    public void lerpTo(double x, double y, double z, float yRot, float xRot, int steps) {
+        lerpX = x;
+        lerpY = y;
+        lerpZ = z;
+        lerping = true;
+    }
+
+    @Override
+    public double lerpTargetX() {
+        return lerping ? lerpX : getX();
+    }
+
+    @Override
+    public double lerpTargetY() {
+        return lerping ? lerpY : getY();
+    }
+
+    @Override
+    public double lerpTargetZ() {
+        return lerping ? lerpZ : getZ();
+    }
+
     @Override
     public void tick() {
         super.tick();
-        if (level().isClientSide)
+        if (level().isClientSide) {
+            if (lerping) {
+                setPos(lerpX, lerpY, lerpZ);
+                lerping = false;
+            }
             return;
+        }
         TubeTransportBehaviour here = TubeTransportBehaviour.get(level(), tube);
         if (here == null || getItem().isEmpty()) {
             spill(Vec3.atCenterOf(tube), Vec3.ZERO);
@@ -169,7 +200,7 @@ public class TubePayloadEntity extends Entity {
         Entity entity = PackageItem.isPackage(stack) ? PackageEntity.fromItemStack(level, at, stack) : new ItemEntity(level, at.x, at.y, at.z, stack);
         entity.setDeltaMovement(motion);
         level.addFreshEntity(entity);
-        level.playSound(null, BlockPos.containing(at), SoundEvents.CHICKEN_EGG, SoundSource.BLOCKS, 0.8f, 0.5f);
+        level.playSound(null, BlockPos.containing(at), Pneumatics.PAYLOAD_POP.get(), SoundSource.BLOCKS, 0.8f, 1);
         if (level instanceof ServerLevel server)
             server.sendParticles(ParticleTypes.POOF, at.x, at.y, at.z, 4, 0.1, 0.1, 0.1, 0.02);
     }

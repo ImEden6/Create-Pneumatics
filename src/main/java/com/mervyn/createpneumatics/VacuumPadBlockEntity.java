@@ -20,7 +20,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -92,7 +91,7 @@ public class VacuumPadBlockEntity extends SmartBlockEntity implements Transforma
             return;
         BlockPos target = worldPosition.relative(getBlockState().getValue(VacuumPadBlock.FACING));
         if (VacuumCargo.place(level, target, cargo)) {
-            level.playSound(null, target, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 1, 0.6f);
+            level.playSound(null, target, Pneumatics.PAD_RELEASE.get(), SoundSource.BLOCKS, 1, 1);
         } else if (++tries < GIVE_UP) {
             return;
         } else {

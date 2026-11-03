@@ -9,7 +9,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtUtils;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -65,7 +64,7 @@ public class VacuumPadArmPoint extends ArmInteractionPoint {
             if (simulate)
                 return getStackInSlot(0);
             CompoundTag cargo = VacuumCargo.capture(level, front);
-            level.playSound(null, front, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1, 0.5f);
+            level.playSound(null, front, Pneumatics.PAD_GRAB.get(), SoundSource.BLOCKS, 1, 1);
             return VacuumCargo.item(level, cargo);
         }
 
@@ -86,7 +85,7 @@ public class VacuumPadArmPoint extends ArmInteractionPoint {
             if (data != null)
                 cargo.put("Data", data.copyTag());
             VacuumCargo.place(level, front, cargo);
-            level.playSound(null, front, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 1, 0.6f);
+            level.playSound(null, front, Pneumatics.PAD_RELEASE.get(), SoundSource.BLOCKS, 1, 1);
             return stack.copyWithCount(stack.getCount() - 1);
         }
 

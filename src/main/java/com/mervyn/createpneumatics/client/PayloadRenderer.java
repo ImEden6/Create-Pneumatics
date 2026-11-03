@@ -29,9 +29,8 @@ public class PayloadRenderer extends EntityRenderer<TubePayloadEntity> {
         if (stack.isEmpty())
             return;
         ms.pushPose();
-        ms.translate(0, 0.25, 0);
         ms.mulPose(Axis.YP.rotationDegrees((payload.tickCount + partialTicks) * 20));
-        ms.scale(0.35f, 0.35f, 0.35f);
+        ms.scale(0.3f, 0.3f, 0.3f);
         items.renderStatic(stack, ItemDisplayContext.FIXED, light, OverlayTexture.NO_OVERLAY, ms, buffer, payload.level(), payload.getId());
         ms.popPose();
         super.render(payload, yaw, partialTicks, ms, buffer, light);

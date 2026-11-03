@@ -4,7 +4,6 @@ import com.mojang.serialization.MapCodec;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
@@ -72,8 +71,8 @@ public class ReliefValveBlock extends TubeMountBlock {
     private void set(Level level, BlockPos pos, BlockState state) {
         boolean open = state.getValue(OPEN);
         level.setBlock(pos, state, Block.UPDATE_ALL);
-        level.playSound(null, pos, open ? SoundEvents.FIRE_EXTINGUISH : SoundEvents.IRON_TRAPDOOR_CLOSE,
-                SoundSource.BLOCKS, 0.4f, open ? 1.6f : 1.2f);
+        level.playSound(null, pos, open ? Pneumatics.VALVE_OPEN.get() : Pneumatics.VALVE_CLOSE.get(),
+                SoundSource.BLOCKS, 0.6f, 1);
         PneumaticPropagator.changed(level, pos.relative(state.getValue(FACING)));
     }
 

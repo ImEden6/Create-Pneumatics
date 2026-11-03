@@ -30,7 +30,7 @@ public class BellJarCycle {
     }
 
     // above this while running the vacuum counts as lost and the batch is spoilt
-    private static final float LOST = -0.35f;
+    static final float LOST = -0.35f;
     // a sealed jar with nothing feeding it creeps back to air this much per tick
     private static final float SEEP = 0.0004f;
 

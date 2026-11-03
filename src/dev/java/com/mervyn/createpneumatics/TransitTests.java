@@ -63,7 +63,7 @@ public final class TransitTests {
     }
 
     private static void tube(ServerLevel level, BlockPos pos, Direction along) {
-        level.setBlock(pos, Pneumatics.TUBE.get().defaultBlockState()
+        level.setBlock(pos, Pneumatics.GLASS_TUBE.get().defaultBlockState()
                 .setValue(PneumaticTubeBlock.property(along), true)
                 .setValue(PneumaticTubeBlock.property(along.getOpposite()), true), Block.UPDATE_ALL);
     }

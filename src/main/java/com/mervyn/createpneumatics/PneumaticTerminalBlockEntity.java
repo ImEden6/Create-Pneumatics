@@ -7,7 +7,6 @@ import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -87,7 +86,7 @@ public class PneumaticTerminalBlockEntity extends SmartBlockEntity {
         if (!simulate) {
             TubePayloadEntity.launch(level, stack.copy(), best, worldPosition);
             cooldown = COOLDOWN;
-            level.playSound(null, worldPosition, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 1, 1.4f);
+            level.playSound(null, worldPosition, Pneumatics.TERMINAL_LAUNCH.get(), SoundSource.BLOCKS, 0.8f, 1);
         }
         return ItemStack.EMPTY;
     }
@@ -100,7 +99,7 @@ public class PneumaticTerminalBlockEntity extends SmartBlockEntity {
             for (int slot = 0; slot < below.getSlots() && !left.isEmpty(); slot++)
                 left = below.insertItem(slot, left, false);
         if (left.isEmpty()) {
-            level.playSound(null, worldPosition, SoundEvents.CHICKEN_EGG, SoundSource.BLOCKS, 0.6f, 0.6f);
+            level.playSound(null, worldPosition, Pneumatics.TERMINAL_ARRIVE.get(), SoundSource.BLOCKS, 0.7f, 1);
             return;
         }
         TubePayloadEntity.eject(level, Vec3.atCenterOf(worldPosition).add(0, 0.7, 0), new Vec3(0, 0.2, 0), left);

@@ -69,7 +69,11 @@ public class BellJarBlockEntity extends SmartBlockEntity implements IHaveGoggleI
         cycle.tickPressure(supply, height);
         if (cycle.phase == BellJarCycle.Phase.IDLE && supply < BellJarCycle.threshold() && level.getGameTime() % 10 == 0)
             tryStart();
+        BellJarCycle.Phase before = cycle.phase;
         cycle.tick(recipe(), level.random);
+        // a batch that ran its time out still has its vacuum; one that lost it ends quietly
+        if (before == BellJarCycle.Phase.RUNNING && cycle.phase == BellJarCycle.Phase.DONE && cycle.pressure <= BellJarCycle.LOST)
+            level.playSound(null, worldPosition, Pneumatics.JAR_DONE.get(), SoundSource.BLOCKS, 0.6f, 1);
         if (cycle.phase == BellJarCycle.Phase.DONE)
             unload();
 
@@ -178,7 +182,7 @@ public class BellJarBlockEntity extends SmartBlockEntity implements IHaveGoggleI
             drained.add(drain(fluids, ingredient));
         current = holder;
         cycle.start(holder, taken, drained);
-        level.playSound(null, worldPosition, SoundEvents.IRON_TRAPDOOR_CLOSE, SoundSource.BLOCKS, 0.5f, 1.6f);
+        level.playSound(null, worldPosition, Pneumatics.JAR_SEAL.get(), SoundSource.BLOCKS, 0.7f, 1);
     }
 
     private static ItemStack extract(@Nullable IItemHandler items, Ingredient ingredient) {
@@ -228,7 +232,7 @@ public class BellJarBlockEntity extends SmartBlockEntity implements IHaveGoggleI
         if (cycle.pressure == 0 && !cycle.busy())
             return;
         cycle.vent(recipe(), level.random);
-        level.playSound(null, worldPosition, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5f, 1.8f);
+        level.playSound(null, worldPosition, Pneumatics.JAR_VENT.get(), SoundSource.BLOCKS, 0.7f, 1);
         sendData();
         setChanged();
     }

@@ -60,13 +60,16 @@ final class Showcase {
                     again("padtest_after", 320),
                     view("padtest_leak", 380, -39, 30, 5, -44, 28, 3)),
             "transit", List.of(
-                    view("transit_moving", 152, -55, 9, 7, -62, 1, 1),
+                    view("transit_close", 141, -58.5, -2.5, 3, -60.5, 0.5, 1.5),
+                    again("transit_close_late", 147),
+                    view("transit_moving", 210, -55, 9, 7, -62, 1, 1),
                     again("transit_after", 300)),
             "jei", List.of(again("jei_vacuum", 200)),
             "jartest", List.of(
                     view("jartest_turning", 160, -22, 10, 6, -28.5, 11, 1.5),
                     again("jartest_after", 340)));
-    private static final List<View> VIEWS = SETS.getOrDefault(System.getenv().getOrDefault("PNEUMATICS_SHOWCASE", "pneumatics"), SETS.get("pneumatics"));
+    private static final String SET = System.getenv().getOrDefault("PNEUMATICS_SHOWCASE", "pneumatics");
+    private static final List<View> VIEWS = SETS.getOrDefault(SET, SETS.get("pneumatics"));
     private static final int QUIT = VIEWS.get(VIEWS.size() - 1).at + 100;
 
     private static int tick;
@@ -80,6 +83,10 @@ final class Showcase {
         IntegratedServer server = mc.getSingleplayerServer();
         if (mc.player == null || mc.level == null || server == null)
             return;
+        if (SET.equals("sounds")) {
+            SoundTour.tick(mc);
+            return;
+        }
         tick++;
         if (tick == SETUP) {
             mc.options.hideGui = true;

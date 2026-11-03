@@ -18,7 +18,6 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.nbt.NbtUtils;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -84,7 +83,7 @@ public class VacuumPadMovement implements MovementBehaviour {
         };
         cargo.put("State", NbtUtils.writeBlockState(VacuumCargo.state(level, cargo).rotate(turn)));
         if (VacuumCargo.place(level, front, cargo))
-            level.playSound(null, front, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 1, 0.6f);
+            level.playSound(null, front, Pneumatics.PAD_RELEASE.get(), SoundSource.BLOCKS, 1, 1);
         else
             VacuumCargo.drop(level, front, cargo);
         context.blockEntityData.remove("Cargo");
@@ -119,7 +118,7 @@ public class VacuumPadMovement implements MovementBehaviour {
         context.blockEntityData.put("Cargo", cargo);
         context.blockEntityData.putFloat("Hold", 1);
         context.data.put("State", cargo.getCompound("State"));
-        level.playSound(null, front, SoundEvents.SLIME_BLOCK_PLACE, SoundSource.BLOCKS, 1, 0.5f);
+        level.playSound(null, front, Pneumatics.PAD_GRAB.get(), SoundSource.BLOCKS, 1, 1);
     }
 
     // a tube against the pad when it sets off is as good as a tank

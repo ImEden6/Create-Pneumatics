@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.jetbrains.annotations.Nullable;
 
+import com.mervyn.createpneumatics.client.LoopSound;
 import com.simibubi.create.api.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.content.kinetics.fan.AirCurrent;
 import com.simibubi.create.content.kinetics.fan.IAirCurrentSource;
@@ -81,6 +82,8 @@ public class PneumaticTubeBlockEntity extends SmartBlockEntity implements IAirCu
         }
         if (vent == null || ventSpeed == 0)
             return;
+        if (level.isClientSide)
+            LoopSound.keep(this, Pneumatics.TUBE_VENT.get(), Math.abs(ventSpeed) / RPM_SCALE, ventSpeed > 0 ? 1 : .8f);
         if (entitySearch-- <= 0) {
             entitySearch = 5;
             airCurrent.findEntities();
