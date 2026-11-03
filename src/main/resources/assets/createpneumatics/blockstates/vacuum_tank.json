@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "createpneumatics:block/vacuum_tank"
+    }
+  }
+}

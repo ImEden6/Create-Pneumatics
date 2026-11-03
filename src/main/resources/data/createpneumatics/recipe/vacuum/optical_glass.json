@@ -1,0 +1,19 @@
+{
+  "type": "createpneumatics:vacuum_processing",
+  "ingredients": [
+    {
+      "tag": "c:glass_blocks/colorless"
+    }
+  ],
+  "results": [
+    {
+      "id": "createpneumatics:optical_glass"
+    },
+    {
+      "id": "createpneumatics:optical_glass",
+      "chance": 0.25
+    }
+  ],
+  "processing_time": 300,
+  "heat_requirement": "heated"
+}

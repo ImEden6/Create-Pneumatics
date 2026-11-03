@@ -1,0 +1,284 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "plate": "createpneumatics:block/plate",
+    "casing": "createpneumatics:block/casing_top",
+    "rubber": "createpneumatics:block/rubber",
+    "port": "createpneumatics:block/port",
+    "particle": "createpneumatics:block/plate"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        10
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#plate"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#plate"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            6,
+            16
+          ],
+          "texture": "#plate"
+        },
+        "west": {
+          "uv": [
+            10,
+            0,
+            16,
+            16
+          ],
+          "texture": "#plate"
+        },
+        "up": {
+          "uv": [
+            0,
+            10,
+            16,
+            16
+          ],
+          "texture": "#plate"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            6
+          ],
+          "texture": "#plate"
+        }
+      }
+    },
+    {
+      "from": [
+        2,
+        2,
+        7
+      ],
+      "to": [
+        14,
+        14,
+        10
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "texture": "#rubber"
+        },
+        "south": {
+          "uv": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "texture": "#casing"
+        },
+        "east": {
+          "uv": [
+            6,
+            2,
+            9,
+            14
+          ],
+          "texture": "#casing"
+        },
+        "west": {
+          "uv": [
+            7,
+            2,
+            10,
+            14
+          ],
+          "texture": "#casing"
+        },
+        "up": {
+          "uv": [
+            2,
+            7,
+            14,
+            10
+          ],
+          "texture": "#casing"
+        },
+        "down": {
+          "uv": [
+            2,
+            6,
+            14,
+            9
+          ],
+          "texture": "#casing"
+        }
+      }
+    },
+    {
+      "from": [
+        3,
+        3,
+        6
+      ],
+      "to": [
+        13,
+        13,
+        7
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "texture": "#rubber"
+        },
+        "south": {
+          "uv": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "texture": "#rubber"
+        },
+        "east": {
+          "uv": [
+            9,
+            3,
+            10,
+            13
+          ],
+          "texture": "#rubber"
+        },
+        "west": {
+          "uv": [
+            6,
+            3,
+            7,
+            13
+          ],
+          "texture": "#rubber"
+        },
+        "up": {
+          "uv": [
+            3,
+            6,
+            13,
+            7
+          ],
+          "texture": "#rubber"
+        },
+        "down": {
+          "uv": [
+            3,
+            9,
+            13,
+            10
+          ],
+          "texture": "#rubber"
+        }
+      }
+    },
+    {
+      "from": [
+        6,
+        6,
+        5.5
+      ],
+      "to": [
+        10,
+        10,
+        6
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            6,
+            10,
+            10
+          ],
+          "texture": "#port"
+        },
+        "south": {
+          "uv": [
+            6,
+            6,
+            10,
+            10
+          ],
+          "texture": "#port"
+        },
+        "east": {
+          "uv": [
+            10,
+            6,
+            10.5,
+            10
+          ],
+          "texture": "#port"
+        },
+        "west": {
+          "uv": [
+            5.5,
+            6,
+            6,
+            10
+          ],
+          "texture": "#port"
+        },
+        "up": {
+          "uv": [
+            6,
+            5.5,
+            10,
+            6
+          ],
+          "texture": "#port"
+        },
+        "down": {
+          "uv": [
+            6,
+            10,
+            10,
+            10.5
+          ],
+          "texture": "#port"
+        }
+      }
+    }
+  ]
+}

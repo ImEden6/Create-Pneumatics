@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "T",
+    "P",
+    "K"
+  ],
+  "key": {
+    "T": {
+      "item": "createpneumatics:pneumatic_tube"
+    },
+    "P": {
+      "tag": "c:plates/brass"
+    },
+    "K": {
+      "item": "minecraft:dried_kelp"
+    }
+  },
+  "result": {
+    "id": "createpneumatics:vacuum_pad",
+    "count": 1
+  }
+}

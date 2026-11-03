@@ -1,0 +1,20 @@
+{
+  "type": "createpneumatics:vacuum_processing",
+  "ingredients": [
+    {
+      "item": "create:crushed_raw_zinc"
+    }
+  ],
+  "results": [
+    {
+      "id": "create:zinc_ingot"
+    },
+    {
+      "id": "create:zinc_nugget",
+      "count": 3,
+      "chance": 0.5
+    }
+  ],
+  "processing_time": 160,
+  "heat_requirement": "heated"
+}

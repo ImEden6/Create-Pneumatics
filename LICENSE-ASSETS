@@ -1,0 +1,7 @@
+Copyright (c) 2026 Mervyn. All rights reserved.
+
+This covers everything in src/main/resources/assets/: textures, models, blockstates, lang files and
+anything else in there.
+
+Don't copy, edit or redistribute these outside of Create: Pneumatics without asking first. Modpacks
+can ship the unmodified mod jar, assets included.

@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "createpneumatics:block/pneumatic_interface"
+    },
+    "facing=east": {
+      "model": "createpneumatics:block/pneumatic_interface",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "createpneumatics:block/pneumatic_interface",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "createpneumatics:block/pneumatic_interface",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "createpneumatics:block/pneumatic_interface",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "createpneumatics:block/pneumatic_interface",
+      "x": 90
+    }
+  }
+}

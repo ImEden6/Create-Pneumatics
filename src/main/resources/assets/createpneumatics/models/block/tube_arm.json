@@ -1,0 +1,128 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "tube": "createpneumatics:block/tube",
+    "collar": "createpneumatics:block/collar",
+    "particle": "createpneumatics:block/tube"
+  },
+  "elements": [
+    {
+      "from": [
+        6,
+        6,
+        0
+      ],
+      "to": [
+        10,
+        10,
+        6
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            10,
+            6,
+            16,
+            10
+          ],
+          "texture": "#tube"
+        },
+        "west": {
+          "uv": [
+            0,
+            6,
+            6,
+            10
+          ],
+          "texture": "#tube"
+        },
+        "up": {
+          "uv": [
+            6,
+            0,
+            10,
+            6
+          ],
+          "texture": "#tube"
+        },
+        "down": {
+          "uv": [
+            6,
+            10,
+            10,
+            16
+          ],
+          "texture": "#tube"
+        }
+      }
+    },
+    {
+      "from": [
+        5.5,
+        5.5,
+        0
+      ],
+      "to": [
+        10.5,
+        10.5,
+        0.75
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5.5,
+            5.5,
+            10.5,
+            10.5
+          ],
+          "texture": "#collar"
+        },
+        "south": {
+          "uv": [
+            5.5,
+            5.5,
+            10.5,
+            10.5
+          ],
+          "texture": "#collar"
+        },
+        "east": {
+          "uv": [
+            15.25,
+            5.5,
+            16,
+            10.5
+          ],
+          "texture": "#collar"
+        },
+        "west": {
+          "uv": [
+            0,
+            5.5,
+            0.75,
+            10.5
+          ],
+          "texture": "#collar"
+        },
+        "up": {
+          "uv": [
+            5.5,
+            0,
+            10.5,
+            0.75
+          ],
+          "texture": "#collar"
+        },
+        "down": {
+          "uv": [
+            5.5,
+            15.25,
+            10.5,
+            16
+          ],
+          "texture": "#collar"
+        }
+      }
+    }
+  ]
+}

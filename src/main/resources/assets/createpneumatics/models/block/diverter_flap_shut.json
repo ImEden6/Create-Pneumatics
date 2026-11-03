@@ -1,0 +1,77 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "rubber": "createpneumatics:block/rubber",
+    "particle": "createpneumatics:block/rubber"
+  },
+  "elements": [
+    {
+      "from": [
+        4.5,
+        4.5,
+        2
+      ],
+      "to": [
+        11.5,
+        11.5,
+        3
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4.5,
+            4.5,
+            11.5,
+            11.5
+          ],
+          "texture": "#rubber"
+        },
+        "south": {
+          "uv": [
+            4.5,
+            4.5,
+            11.5,
+            11.5
+          ],
+          "texture": "#rubber"
+        },
+        "east": {
+          "uv": [
+            13,
+            4.5,
+            14,
+            11.5
+          ],
+          "texture": "#rubber"
+        },
+        "west": {
+          "uv": [
+            2,
+            4.5,
+            3,
+            11.5
+          ],
+          "texture": "#rubber"
+        },
+        "up": {
+          "uv": [
+            4.5,
+            2,
+            11.5,
+            3
+          ],
+          "texture": "#rubber"
+        },
+        "down": {
+          "uv": [
+            4.5,
+            13,
+            11.5,
+            14
+          ],
+          "texture": "#rubber"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "textures": {
+    "needle": "createpneumatics:block/needle",
+    "hub": "createpneumatics:block/valve_handle",
+    "particle": "createpneumatics:block/needle"
+  },
+  "elements": [
+    {
+      "from": [
+        7.6,
+        8,
+        5.55
+      ],
+      "to": [
+        8.4,
+        11.6,
+        5.85
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7.6,
+            4.4,
+            8.4,
+            8
+          ],
+          "texture": "#needle"
+        },
+        "south": {
+          "uv": [
+            7.6,
+            4.4,
+            8.4,
+            8
+          ],
+          "texture": "#needle"
+        },
+        "east": {
+          "uv": [
+            10.15,
+            4.4,
+            10.45,
+            8
+          ],
+          "texture": "#needle"
+        },
+        "west": {
+          "uv": [
+            5.55,
+            4.4,
+            5.85,
+            8
+          ],
+          "texture": "#needle"
+        },
+        "up": {
+          "uv": [
+            7.6,
+            5.55,
+            8.4,
+            5.85
+          ],
+          "texture": "#needle"
+        },
+        "down": {
+          "uv": [
+            7.6,
+            10.15,
+            8.4,
+            10.45
+          ],
+          "texture": "#needle"
+        }
+      }
+    },
+    {
+      "from": [
+        7.4,
+        7.4,
+        5.55
+      ],
+      "to": [
+        8.6,
+        8.6,
+        6
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7.4,
+            7.4,
+            8.6,
+            8.6
+          ],
+          "texture": "#hub"
+        },
+        "south": {
+          "uv": [
+            7.4,
+            7.4,
+            8.6,
+            8.6
+          ],
+          "texture": "#hub"
+        },
+        "east": {
+          "uv": [
+            10,
+            7.4,
+            10.45,
+            8.6
+          ],
+          "texture": "#hub"
+        },
+        "west": {
+          "uv": [
+            5.55,
+            7.4,
+            6,
+            8.6
+          ],
+          "texture": "#hub"
+        },
+        "up": {
+          "uv": [
+            7.4,
+            5.55,
+            8.6,
+            6
+          ],
+          "texture": "#hub"
+        },
+        "down": {
+          "uv": [
+            7.4,
+            10,
+            8.6,
+            10.45
+          ],
+          "texture": "#hub"
+        }
+      }
+    }
+  ]
+}

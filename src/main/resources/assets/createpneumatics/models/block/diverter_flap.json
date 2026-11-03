@@ -1,0 +1,77 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "collar": "createpneumatics:block/collar",
+    "particle": "createpneumatics:block/collar"
+  },
+  "elements": [
+    {
+      "from": [
+        4.5,
+        4.5,
+        2
+      ],
+      "to": [
+        11.5,
+        11.5,
+        3
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4.5,
+            4.5,
+            11.5,
+            11.5
+          ],
+          "texture": "#collar"
+        },
+        "south": {
+          "uv": [
+            4.5,
+            4.5,
+            11.5,
+            11.5
+          ],
+          "texture": "#collar"
+        },
+        "east": {
+          "uv": [
+            13,
+            4.5,
+            14,
+            11.5
+          ],
+          "texture": "#collar"
+        },
+        "west": {
+          "uv": [
+            2,
+            4.5,
+            3,
+            11.5
+          ],
+          "texture": "#collar"
+        },
+        "up": {
+          "uv": [
+            4.5,
+            2,
+            11.5,
+            3
+          ],
+          "texture": "#collar"
+        },
+        "down": {
+          "uv": [
+            4.5,
+            13,
+            11.5,
+            14
+          ],
+          "texture": "#collar"
+        }
+      }
+    }
+  ]
+}

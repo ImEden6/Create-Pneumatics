@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "R",
+    "T"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:lever"
+    },
+    "T": {
+      "item": "createpneumatics:pneumatic_tube"
+    }
+  },
+  "result": {
+    "id": "createpneumatics:relief_valve",
+    "count": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "createpneumatics:vacuum_processing",
+  "ingredients": [
+    {
+      "item": "create:crushed_raw_gold"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:gold_ingot"
+    },
+    {
+      "id": "minecraft:gold_nugget",
+      "count": 3,
+      "chance": 0.5
+    }
+  ],
+  "processing_time": 160,
+  "heat_requirement": "heated"
+}

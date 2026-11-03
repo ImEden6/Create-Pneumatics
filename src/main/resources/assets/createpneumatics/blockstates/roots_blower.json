@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "createpneumatics:block/roots_blower"
+    },
+    "facing=east": {
+      "model": "createpneumatics:block/roots_blower",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "createpneumatics:block/roots_blower",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "createpneumatics:block/roots_blower",
+      "y": 270
+    }
+  }
+}

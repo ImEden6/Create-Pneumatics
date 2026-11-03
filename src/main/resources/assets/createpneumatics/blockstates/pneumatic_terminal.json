@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "createpneumatics:block/pneumatic_terminal"
+    }
+  }
+}
