@@ -3,18 +3,32 @@
   "ingredients": [
     {
       "item": "create:crushed_raw_iron"
+    },
+    {
+      "item": "create:crushed_raw_iron"
+    },
+    {
+      "item": "create:crushed_raw_iron"
+    },
+    {
+      "item": "create:crushed_raw_iron"
     }
   ],
   "results": [
     {
-      "id": "minecraft:iron_ingot"
+      "id": "minecraft:iron_ingot",
+      "count": 5
     },
     {
-      "id": "minecraft:iron_nugget",
-      "count": 3,
+      "id": "minecraft:iron_ingot",
       "chance": 0.5
+    },
+    {
+      "id": "minecraft:redstone",
+      "count": 2,
+      "chance": 0.75
     }
   ],
-  "processing_time": 160,
+  "processing_time": 200,
   "heat_requirement": "heated"
 }

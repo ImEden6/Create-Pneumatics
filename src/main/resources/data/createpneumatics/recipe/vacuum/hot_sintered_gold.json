@@ -1,0 +1,34 @@
+{
+  "type": "createpneumatics:vacuum_processing",
+  "ingredients": [
+    {
+      "item": "create:crushed_raw_gold"
+    },
+    {
+      "item": "create:crushed_raw_gold"
+    },
+    {
+      "item": "create:crushed_raw_gold"
+    },
+    {
+      "item": "create:crushed_raw_gold"
+    }
+  ],
+  "results": [
+    {
+      "id": "minecraft:gold_ingot",
+      "count": 6
+    },
+    {
+      "id": "minecraft:gold_ingot",
+      "chance": 0.5
+    },
+    {
+      "id": "minecraft:quartz",
+      "count": 2,
+      "chance": 0.5
+    }
+  ],
+  "processing_time": 160,
+  "heat_requirement": "superheated"
+}

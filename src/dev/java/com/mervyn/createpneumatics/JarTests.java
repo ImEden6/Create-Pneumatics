@@ -3,10 +3,12 @@ package com.mervyn.createpneumatics;
 import java.util.List;
 
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.content.contraptions.bearing.MechanicalBearingBlock;
 import com.simibubi.create.content.contraptions.glue.SuperGlueEntity;
 import com.simibubi.create.content.kinetics.motor.CreativeMotorBlock;
 import com.simibubi.create.content.kinetics.motor.CreativeMotorBlockEntity;
+import com.simibubi.create.content.processing.burner.BlazeBurnerBlock;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -24,9 +26,9 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandler;
 
-// showcase-only checks for the jar: valve opened mid-run, a ride on a bearing, and an nbt round trip
+// showcase-only checks for the jar: valve opened mid-run, a ride on a bearing, an nbt round trip, and sintering over a superheated burner
 public final class JarTests {
-    private static BlockPos valveJar, valve, bearing, rideJar, tallJar;
+    private static BlockPos valveJar, valve, bearing, rideJar, tallJar, sinterJar;
     private static Direction front;
 
     private JarTests() {}
@@ -72,6 +74,26 @@ public final class JarTests {
         rideJar = bearing.above(2);
         jarOnBasin(level, rideJar, right);
         level.addFreshEntity(new SuperGlueEntity(level, SuperGlueEntity.span(rideJar.below(), rideJar)));
+
+        BlockPos hot = at.relative(right, 7);
+        level.setBlock(hot, Pneumatics.BLOWER.get().defaultBlockState().setValue(RootsBlowerBlock.HORIZONTAL_FACING, front), Block.UPDATE_ALL);
+        BlockPos hotMotor = hot.relative(left);
+        level.setBlock(hotMotor, AllBlocks.CREATIVE_MOTOR.get().defaultBlockState().setValue(CreativeMotorBlock.FACING, right), Block.UPDATE_ALL);
+        if (level.getBlockEntity(hotMotor) instanceof CreativeMotorBlockEntity be)
+            be.generatedSpeed.setValue(-128);
+        for (int i = 1; i <= 3; i++)
+            level.setBlock(hot.relative(back, i), Pneumatics.TUBE.get().defaultBlockState()
+                    .setValue(PneumaticTubeBlock.property(front), true)
+                    .setValue(PneumaticTubeBlock.property(back), true), Block.UPDATE_ALL);
+        sinterJar = hot.relative(back, 4);
+        BlockPos burner = sinterJar.below(2);
+        level.setBlock(burner, AllBlocks.BLAZE_BURNER.getDefaultState().setValue(BlazeBurnerBlock.HEAT_LEVEL, BlazeBurnerBlock.HeatLevel.SMOULDERING), Block.UPDATE_ALL);
+        BlazeBurnerBlock.tryInsert(level.getBlockState(burner), level, burner, AllItems.BLAZE_CAKE.asStack(), false, true, false);
+        level.setBlock(sinterJar.below(), AllBlocks.BASIN.getDefaultState(), Block.UPDATE_ALL);
+        level.setBlock(sinterJar, Pneumatics.JAR.get().defaultBlockState().setValue(BellJarBlock.FACING, right), Block.UPDATE_ALL);
+        IItemHandler basin = level.getCapability(Capabilities.ItemHandler.BLOCK, sinterJar.below(), Direction.UP);
+        if (basin != null)
+            basin.insertItem(0, AllItems.CRUSHED_IRON.asStack(8), false);
     }
 
     private static void jarOnBasin(ServerLevel level, BlockPos jar, Direction dial) {
@@ -109,6 +131,7 @@ public final class JarTests {
             report(level, "valve", valveJar);
             report(level, "ride", rideJar);
             report(level, "tall", tallJar);
+            report(level, "sinter", sinterJar);
         }
     }
 
@@ -148,6 +171,8 @@ public final class JarTests {
             out.append(' ').append(c.phase).append(String.format(" p=%.2f t=%d batch=%s out=%s", c.pressure, c.timer, c.batch, c.outputs));
         } else
             out.append(" no jar (").append(level.getBlockState(pos).getBlock()).append(')');
+        if (level.getBlockState(pos.below(2)).hasProperty(BlazeBurnerBlock.HEAT_LEVEL))
+            out.append(" heat=").append(level.getBlockState(pos.below(2)).getValue(BlazeBurnerBlock.HEAT_LEVEL));
         IItemHandler basin = level.getCapability(Capabilities.ItemHandler.BLOCK, pos.below(), Direction.UP);
         if (basin != null) {
             out.append(" basin");

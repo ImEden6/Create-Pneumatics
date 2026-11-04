@@ -91,9 +91,10 @@ public class VacuumRecipe extends StandardProcessingRecipe<RecipeInput> {
 
     @Nullable
     public static RecipeHolder<VacuumRecipe> find(Level level, List<ItemStack> items, List<FluidStack> fluids, BlazeBurnerBlock.HeatLevel heat) {
+        RecipeHolder<VacuumRecipe> best = null;
         for (RecipeHolder<VacuumRecipe> holder : level.getRecipeManager().getAllRecipesFor(Pneumatics.VACUUM_TYPE.<RecipeInput, VacuumRecipe>getType()))
-            if (holder.value().fits(items, fluids, heat))
-                return holder;
-        return null;
+            if (holder.value().fits(items, fluids, heat) && (best == null || holder.value().getRequiredHeat().ordinal() > best.value().getRequiredHeat().ordinal()))
+                best = holder;
+        return best;
     }
 }
