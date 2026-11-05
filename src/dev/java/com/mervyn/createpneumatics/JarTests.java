@@ -140,7 +140,7 @@ public final class JarTests {
         if (!(level.getBlockEntity(pos) instanceof BellJarBlockEntity be))
             return;
         RecipeHolder<VacuumRecipe> holder = (RecipeHolder<VacuumRecipe>) level.getRecipeManager()
-                .byKey(ResourceLocation.fromNamespaceAndPath(CreatePneumatics.MODID, "vacuum/ration_pack_from_stew")).orElseThrow();
+                .byKey(ResourceLocation.fromNamespaceAndPath(CreatePneumatics.MODID, "vacuum_processing/ration_pack_from_stew")).orElseThrow();
         IItemHandler basin = level.getCapability(Capabilities.ItemHandler.BLOCK, pos.below(), Direction.UP);
         ItemStack stew = basin == null ? new ItemStack(Items.MUSHROOM_STEW) : basin.extractItem(0, 1, false);
         BellJarCycle cycle = be.cycle();

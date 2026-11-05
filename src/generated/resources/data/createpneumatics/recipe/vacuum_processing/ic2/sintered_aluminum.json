@@ -1,0 +1,35 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "ic2"
+    }
+  ],
+  "type": "createpneumatics:vacuum_processing",
+  "heat_requirement": "heated",
+  "ingredients": [
+    {
+      "item": "create:crushed_raw_aluminum"
+    },
+    {
+      "item": "create:crushed_raw_aluminum"
+    },
+    {
+      "item": "create:crushed_raw_aluminum"
+    },
+    {
+      "item": "create:crushed_raw_aluminum"
+    }
+  ],
+  "processing_time": 200,
+  "results": [
+    {
+      "count": 5,
+      "id": "ic2:ingot_aluminium"
+    },
+    {
+      "chance": 0.5,
+      "id": "ic2:ingot_aluminium"
+    }
+  ]
+}

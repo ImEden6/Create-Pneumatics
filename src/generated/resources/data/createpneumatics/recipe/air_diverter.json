@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "create:brass_casing"
+    },
+    "R": {
+      "tag": "c:dusts/redstone"
+    },
+    "T": {
+      "item": "createpneumatics:pneumatic_tube"
+    }
+  },
+  "pattern": [
+    " T ",
+    "TCT",
+    " R "
+  ],
+  "result": {
+    "count": 1,
+    "id": "createpneumatics:air_diverter"
+  }
+}

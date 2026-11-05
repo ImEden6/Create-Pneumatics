@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "tag": "c:glass_panes/colorless"
+    },
+    "N": {
+      "tag": "c:nuggets/iron"
+    },
+    "P": {
+      "tag": "c:plates/brass"
+    },
+    "T": {
+      "item": "createpneumatics:pneumatic_tube"
+    }
+  },
+  "pattern": [
+    " N ",
+    "PGP",
+    " T "
+  ],
+  "result": {
+    "count": 1,
+    "id": "createpneumatics:pressure_gauge"
+  }
+}

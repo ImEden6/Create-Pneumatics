@@ -1,0 +1,18 @@
+{
+  "type": "createpneumatics:vacuum_processing",
+  "ingredients": [
+    {
+      "item": "minecraft:rabbit_stew"
+    }
+  ],
+  "processing_time": 240,
+  "results": [
+    {
+      "count": 2,
+      "id": "createpneumatics:ration_pack"
+    },
+    {
+      "id": "minecraft:bowl"
+    }
+  ]
+}

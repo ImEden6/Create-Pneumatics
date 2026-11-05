@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "create:fluid_tank"
+    },
+    "P": {
+      "tag": "c:plates/brass"
+    },
+    "T": {
+      "item": "createpneumatics:pneumatic_tube"
+    }
+  },
+  "pattern": [
+    "PTP",
+    "PFP",
+    "PPP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createpneumatics:vacuum_tank"
+  }
+}

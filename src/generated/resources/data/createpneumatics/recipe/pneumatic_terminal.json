@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "create:brass_casing"
+    },
+    "H": {
+      "item": "minecraft:hopper"
+    },
+    "P": {
+      "tag": "c:plates/brass"
+    },
+    "T": {
+      "item": "createpneumatics:pneumatic_tube"
+    }
+  },
+  "pattern": [
+    "PHP",
+    "T T",
+    "PCP"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createpneumatics:pneumatic_terminal"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "createpneumatics:vacuum_processing",
+  "ingredients": [
+    {
+      "item": "minecraft:wet_sponge"
+    }
+  ],
+  "processing_time": 100,
+  "results": [
+    {
+      "id": "minecraft:sponge"
+    },
+    {
+      "amount": 250,
+      "id": "minecraft:water"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "tag": "c:glass_panes/colorless"
+    },
+    "P": {
+      "tag": "c:plates/brass"
+    }
+  },
+  "pattern": [
+    "PGP"
+  ],
+  "result": {
+    "count": 4,
+    "id": "createpneumatics:pneumatic_tube"
+  }
+}

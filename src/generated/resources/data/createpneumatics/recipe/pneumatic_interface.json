@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "create:brass_casing"
+    },
+    "K": {
+      "item": "minecraft:dried_kelp"
+    },
+    "P": {
+      "tag": "c:plates/brass"
+    },
+    "T": {
+      "item": "createpneumatics:pneumatic_tube"
+    }
+  },
+  "pattern": [
+    "PKP",
+    "CTC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createpneumatics:pneumatic_interface"
+  }
+}
