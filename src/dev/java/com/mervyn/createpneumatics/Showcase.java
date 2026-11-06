@@ -87,6 +87,10 @@ final class Showcase {
             SoundTour.tick(mc);
             return;
         }
+        if (SET.equals("ponder")) {
+            PonderTour.tick(mc);
+            return;
+        }
         tick++;
         if (tick == SETUP) {
             mc.options.hideGui = true;

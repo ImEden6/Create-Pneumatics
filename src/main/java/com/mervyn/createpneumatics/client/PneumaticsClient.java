@@ -9,6 +9,7 @@ import com.simibubi.create.foundation.item.TooltipModifier;
 
 import dev.engine_room.flywheel.lib.visualization.SimpleBlockEntityVisualizer;
 import net.createmod.catnip.lang.FontHelper;
+import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 import net.neoforged.api.distmarker.Dist;
@@ -27,6 +28,7 @@ public class PneumaticsClient {
     public PneumaticsClient(ModContainer container) {
         container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
         PneumaticPartials.init();
+        PonderIndex.addPlugin(new PneumaticsPonder());
     }
 
     @SubscribeEvent

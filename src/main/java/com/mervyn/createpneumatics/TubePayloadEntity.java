@@ -62,7 +62,7 @@ public class TubePayloadEntity extends Entity {
         return entityData.get(ITEM);
     }
 
-    private void setItem(ItemStack stack) {
+    public void setItem(ItemStack stack) {
         entityData.set(ITEM, stack);
     }
 

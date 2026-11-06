@@ -78,14 +78,12 @@ public class PressureGaugeBlockEntity extends SmartBlockEntity implements IHaveG
     @Override
     protected void write(CompoundTag tag, HolderLookup.Provider registries, boolean clientPacket) {
         super.write(tag, registries, clientPacket);
-        if (clientPacket)
-            tag.putFloat("Pressure", pressure);
+        tag.putFloat("Pressure", pressure);
     }
 
     @Override
     protected void read(CompoundTag tag, HolderLookup.Provider registries, boolean clientPacket) {
         super.read(tag, registries, clientPacket);
-        if (clientPacket)
-            pressure = tag.getFloat("Pressure");
+        pressure = tag.getFloat("Pressure");
     }
 }
