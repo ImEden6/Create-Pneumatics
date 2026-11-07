@@ -1,5 +1,6 @@
 package com.mervyn.createpneumatics;
 
+import java.util.Arrays;
 import java.util.List;
 
 import net.createmod.catnip.gui.ScreenOpener;
@@ -16,6 +17,9 @@ final class PonderTour {
     private static final int START = 60;
     private static final int STEP = 30;
     private static final String ONLY = System.getenv().getOrDefault("PNEUMATICS_ONLY", "");
+    // PNEUMATICS_TICKS=134,138 shoots those scene ticks instead of the fractions above
+    private static final String TICKS = System.getenv().getOrDefault("PNEUMATICS_TICKS", "");
+    private static final int[] AT = TICKS.isEmpty() ? null : Arrays.stream(TICKS.split(",")).mapToInt(Integer::parseInt).toArray();
 
     private static final List<String> TODO = BLOCKS.stream().filter(s -> s.contains(ONLY)).toList();
     private static int tick, scene, point = -1;
@@ -40,12 +44,12 @@ final class PonderTour {
         }
         if (point > 0)
             Screenshot.grab(mc.gameDirectory, "ponder_" + ui.getActiveScene().getId().getPath() + "_" + point + ".png", mc.getMainRenderTarget(), message -> {});
-        if (point == POINTS.length) {
+        if (point == (AT == null ? POINTS.length : AT.length)) {
             scene++;
             point = -1;
             return;
         }
-        ui.seekToTime((int) (ui.getActiveScene().getTotalTime() * POINTS[point]));
+        ui.seekToTime(AT == null ? (int) (ui.getActiveScene().getTotalTime() * POINTS[point]) : AT[point]);
         point++;
     }
 }
